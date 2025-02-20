@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\title{NT 2022 JBMO N1}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Determine all pairs $(k,n)$ of positive integers that satisfy
+		\[1! + 2! + \dots + k! = 1 + 2 + \dots + n \]
+	\end{problem}
+	
+	\begin{solution}
+		Note that of $k<7$ only 3 solutions exist namely $(1,1)$ , $(2,2)$ and $(5,17)$ . If $k \geq 7 $ then in this case we have 
+		\[2*(1! + 2! + \dots + k!) = n(n+1)\]
+		Taking modulo $7$ both sides we get
+		$ 3 \equiv n(n+1) \mod 7$ , this is a contraditction as ($n(n+1)) $ can never have a residue $3$ mod $7$ . Hence these are the only solutions
+	\end{solution}
+	
+	\begin{exploration}
+		This equation appears to be solvable by modular arithmetic. Just a matter of choosing right mod, tried with a computer and 7 works just fine. Another intuition on why modular arithmetic should work is if $k \geq p$ for some $p$ then left side is always constant modulo $p$ while left side is 
+		\[\frac{1}{2}\left( \left( n + \frac{1}{2} \right)^{2} - \dfrac{1}{4}\right)   \]
+		This should only take half the values as quadratic residues can only take half the values modulo $p$. Since left and right side feels independent, each value of $p$ has a $50 \%$ chance of working. Hence a modular search for contradiction feels natural.
+	\end{exploration}
+	
+	\begin{tags}
+		Number Theory ,  Diophantine equation , Factorial , JBMO , Shortlist , Triangular Numbers
+	\end{tags}
+	
+\end{document}
