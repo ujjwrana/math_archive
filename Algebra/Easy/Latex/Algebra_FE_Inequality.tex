@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\title{Algebra FE Inequality}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Find all functions \(f : \mathbb{R} \to \mathbb{R} \) such that
+		\[f(x+y)+y \leq f(f(f(x)))\]
+		holds for all $x,y \in \mathbb{R}$
+	\end{problem}
+	
+	\begin{solution}
+		All functions such that $f(x)=c-x$ where $c \in \mathbb{R} $ are the only solution to the following equation. It's clear all such function satisfy the following equation, lets prove they are the only one.
+		
+		Let $P(x,y) $ be the assertion that $f(x+y)+y \leq f(f(f(x)))$.
+		
+		Then $P(x,f(f(x))-x) \implies f(f(x)) \leq  x$ . Hence , 
+		\[f(x+y)+y \leq f(f(f(x))) \leq f(x) \] which implies
+		$f(x+y)+x+y \leq f(x) + x $. Let $g(x)=f(x)+x$, then $g(x+y) \leq g(x)$. 
+		
+		This implies $g(x) $ is contant, hence $f(x)=c-x$, and all such functions satisfy the assertion.
+	\end{solution}
+	
+	\begin{exploration}
+		N/A
+	\end{exploration}
+	
+	\begin{tags}
+		Algebra , FE , Functional Equation , Functional Inequality , Inequality 
+	\end{tags}
+	
+\end{document}
