@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\title{Algebra FE integer }
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Determine all functions $f: \mathbb{N} \to \mathbb{N}$ such that for every positive integer $n$ we have 
+		\[
+		2n+2001 \leq f(f(n)) + f(n) \leq 2n+2002
+		\]
+	\end{problem}
+	
+	\begin{solution}
+		$f(n)=n+667$ is the only solution. Clearly it works , let's prove it's the only one.
+		
+		In general we will prove that if $c \in \mathbb{N} $ ,then $f(n)=n+c$ is the only solution to 
+		$2n+3c \leq f(f(n)) + f(n) \leq 2n+3c+1$ so let's focus on this equation instead.
+		
+		Let's say $ f(n) \neq (n+c)$ for some n , then 
+		
+		if $f(n)=n+c+k$ where $k>0$ then
+		
+		$  f(n)+c -2k \leq f(f(n)) \leq f(n) + c - (2k-1)  $
+		
+		if $f(n)=n+c-k$ where $k>0$ then
+		
+		$f(n)+c +2k \leq f(f(n)) \leq f(n) + c  + (2k+1) \label {2}$
+		
+		This means if $f(a)>a+c$ then $f(f(a))<f(a)+c$ and vice versa. 
+		
+		Let's say $f(n) \neq n+c$ for all n, choose a $p$ such that $f(p) \neq p+c$ , if $f(p) < p+c $ choose $p \coloneq f(p)$ . Now we have $f(p) > p+c $.
+		let's define the sequece 
+		\[
+		T_{0}=p , T_{n}= f(T_{n-1})
+		\]
+		Let's define another integer sequence $G_{k} = T_{k} - T_{k-1} -c$. Note that $G_{1} >0 $ and $G_{k}$ alternates sign hence $G_{k}$ is positive for odd $k$ and negative otherwise.
+		
+		Note that for any number $j$
+		\[
+		T_{2j}-T_{0} - 2jc = \sum_{i=1}^{i=j} (G_{2i-1} + G_{2i})
+		\]
+		Note that for even $m$ we have $G_{m} \leq - (2G_{m-1}-1)$
+	Now as $G_{1}=k>0$ , this implies $G_{2} \leq -(2k-1)$	and $G_{3} \geq 2(2k-1) \geq 2k $.
+	Hence for odd $m$ we have $G_{m} \geq 2G_{m-2}$	. Hence $G_{2t-1} \geq 2^{t-1} k $.
+	Now note that $G_{2i-1} + G_{2i} \leq G_{2i-1} -(2G_{2i-1} -1) \leq 1-G_{2i-1} \leq 1- 2^{i-1}k$.
+	
+	Hence 
+	\[
+	T_{2j}-T_{0} - 2jc = \sum_{i=1}^{i=j} (G_{2i-1} + G_{2i}) \leq \sum_{i=1}^{i=j} (1-2^{i-1} k) = (j-(2^{j}-1)k).
+	\]
+	So
+	\[
+	T_{2j}\leq  T_{0} + (2c+1)j  -(2^{j}-1)k.
+	\]
+	Now note that if j is big enough then right hand side will be negative hence $T_{2j}$ will be negative which is a contradiction. Therefore we have $f(n)=n+c$. QED
+	
+	\end{solution}
+	
+	\begin{exploration}
+		N/A
+	\end{exploration}
+	
+	\begin{tags}
+		Algebra ,  functional equation , FE , natural numbers , Number theory, inequality
+	\end{tags}
+	
+\end{document}
