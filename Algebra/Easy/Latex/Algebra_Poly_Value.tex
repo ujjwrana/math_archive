@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\title{Algebra Poly Value}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		If $P(x)$ denotes a polynomial of degree $n$ such that $P(k)=\frac{k}{k+1}$ for $k=0,1,2 \dots , n,$ determine $P(n+1)$.
+	\end{problem}
+	
+	\begin{solution}
+		Consider the $(n+1)$ degree polynomial $G(x)=(x+1)P(x) - x$. Note that $0,1,2 \dots ,n$ are roots of $G(x)$, hence $G(x)= C \prod_{i=0}^{i=n} (x-i) $ where $C$ is a constant. Now since $(x+1)| G(x)+x$ . This means -1 is a root to $G(x)+x$, so $G(-1)-1=0$, i.e. $G(-1)=1$, so 
+		$C(-1)^{n+1} ((n+1)!)=1$, hence $C=\frac{(-1)^{n+1}}{(n+1)!}$ . Hence $P(n+1) = \frac{(G(n+1) + (n+1))}{n+2} = \frac{n+1 +(-1)^{n+1}}{n+2}$
+	\end{solution}
+	
+	\begin{exploration}
+		N/A
+	\end{exploration}
+	
+	\begin{tags}
+		Polynomial ,  Algebra , Interpolation
+	\end{tags}
+	
+\end{document}
