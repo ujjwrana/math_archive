@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\title{Combi Mean Free Subset}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Let $p$ be a prime , A is an infinite set of integers . Prove that there is a subset B of A with $2p-2$ elements, such that arithmetic mean of any pairwise distinct $p$ elements in B does not belong in A.
+	\end{problem}
+	
+	\begin{solution}
+		For notation we define P(B,A) to be true iff A is an infinite set of integers and B is a subset of A with $2p-2$ elements s.t. arithmetic mean of any pairwise distinct $p$ elements in B does not belong in A. We have to prove that for each A there exists a B s.t. P(B,A) is true
+		
+		We will prove the result for all infinite natural number sets A. First of all let's prove that it's sufficent to prove the result for all natural sets. Let's assume the proposition is true for all natural sets, then we will prove it's true for all integer sets. Let's define  If A has infinite natural numbers then consider the set $A^{+} = \{x: x>0 , x \in A \}$. Consider the subset $B^{+}$ s.t. $P(B^{+},A^{+})$ is true , then so is $P(B^{+},A)$ . If A has infinite negtaive numbers consider the set $A^{-} = \{-x: x<0 , x \in A \}$ ,  consider the set $B^{-}$ s.t. $P(B^{-},A^{-})$ is true , consider the set $C=\{-x: x\in B^{-}\}$ , we have P(C,A) to be true. Therefore it suffices to prove the result for A which are an infinite set of natural numbers.
+		\\
+
+		Let A be an infinite set of natural numbers. Note that if a set C which is a subset of set $T=\{x: x>t , x \in A \}$ and satisfies P(C,T) =true then we must also have P(C,A)=true. 
+		Let's index our set A s.t. its elements are arranged in increasing order so $A= \{A_{i}: i \in \mathbb{N}, A_{1} < A_{2} < \dots \}$
+		\\ 
+		
+		Consider all the numbers in A modulo p. If there are 2 residues which have at least p-1 integers modulo equal to them (let's call them a and b), then choose p-1 integers whose residue = a mod p and p-1 integers whose residue = b mod p. It's clear that mean of any p - subset of this set is not an integer hence we can set B to be equal to this set and it satisfies the original condition. 
+		
+		Now if that's not the case consider the function $f_{k} : A \to \mathbb{Z}/ p^{k} \mathbb{Z} $ where     
+		
+		$f_{k}(a)=a \mod p^{k} ,\forall a \in A $ .
+		Now since $ \mathbb{Z}/ p^{k} \mathbb{Z} $ is a finite set it must have at least one integer whose inverse image is infinite. If for some k there are at least 2 integers whose inverse image is an infinite set then choose minimum such k.let's call these 2 integers a and b
+		\\
+		Clearly $k>1$, so numbers modulo $p^{k-1}$ will have infinite inverse image for one number and finite for every other modulo. let's call this number which has infinite inverses in mapping modulo $p^{k-1}$  be t. So after a finite number $N$, we have $A_{i} \equiv t \mod p^{k-1}$ for all $i>=N$ let's consider the set $S_{1}=\{A_{j}:j>N, A_{j} \equiv a \mod p^{k}\}$ and $S_{2}=\{A_{j}:j>N, A_{j} \equiv b \mod p^{k}\}$ . Consider a set S which has p-1 numbers from $S_{1}$ and p-1 from $S_{2}$, then we claim  that P(S,A) is true. This is true as any mean of p numbers of S will be greater than $A_{N}$ but the mean will not have a residue = t mod $p^{k-1}$ but all numbers greater than $A_{N}$ in A will have residue = t mod $p^{k-1}$. 
+		\\
+		Now consider that there is not a single k for which we have 2 residues occuring infinite number of times. Then let's define $G: \mathbb{N} \to \mathbb{N}$ s.t. $G(k)= a $ where a is the residue  occurs infinitely many times modulo $p^{k}$.
+		\\
+		Let's define the sequence $T_{i}= max(\{j : A_{j} \not \equiv G(i) \mod p^{i}\})$ where max of empty set is 0, note that $T_{i} $ is an non-decreasing sequence ( as the i+1 th set is superset of i th set). Note that the sequence $T_{i}$ is also unbounded ( if it's eventually constant then after some N, $A_{i} \equiv A_{j} \mod p^{t}$ for all t which is a contradiction). Now choose set 
+		$C= \{A_{T_{i}}  : i>10 , T_{i} >T_{i-1}\} $ , choose any $2p-2$ subset of $C$, let's call it B. We claim that P(B,A) is true.
+		\\
+		Let's choose p elements from  B, let's call them $A_{T_{j_{1}}},A_{T_{j_{2}}} \dots A_{T_{j_{p}}}$
+		where $j_{1} < j_{2} < \dots j_{p}$ . Now note that their mean is greater than $A_{T_{j_{1}}}$ hence their value modulo $p^{j_{1}-1}$ must be equal to $G(j_{1}-1)$ if it is in A. But to consider the residue of mean of p numbers modulo $p^{j_{1}-1}$ we only have to consider these numbers modulo $p^{j_{1}}$ since all other terms wont affect the value of mean modulo $p^{j_{1}-1}$. Now note that  $G(j_{1}) \equiv G(j_{1}-1) \mod p^{j_{1}-1}$ , so $G(j_{1})=G(j_{1}-1) + p^{j_{1}-1} y$ where $y<p$, similarly $A_{T_{j_{1}}}=G(j_{1}-1) + p^{j_{1}-1} x$ as  $T_{j_{1}}>T_{j_{1}-1}$where $x<p, x \not = y$
+		\[
+		\sum_{k=1}^{k=p} \frac{A_{T_{j_{k}}} }{p} \equiv (G(j_{1}-1) p + y(p-1)p^{j_{1}-1} + xp^{j_{1}-1} )/p \equiv (G(j_{1}-1)+p^{j_{1}-2} (x+ (p-1)y)  \not \equiv G(j_{1}-1)  \mod p^{j_{1}-1} 
+		\]
+		last inequation holds as $x \neq y \mod p$. Hence mean does not have a residue of $G(j_{1}-1)$ modulo $p^{j_{1}-1}$, therefore P(B,A) is true .   
+		\\ 
+		QED
+	\end{solution}
+	
+	\begin{exploration}
+		p-base numbers to the rescue, thinking in base-p helped give the solution a direction 
+	\end{exploration}
+	
+	\begin{tags}
+		Combinatorics , Number Theory , primes , mean , subset , 2p-2
+	\end{tags}
+	
+\end{document}
