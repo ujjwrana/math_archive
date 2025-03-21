@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\title{USAMO 2018/4}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Let $p$ be a prime and $a_1, \dots , a_p$ be integers. 
+		
+		Show that there exists an integer $k$ such that the numbers 
+		\[
+		a_1 +k , a_2 +k, \dots a_p + pk
+		\]
+		produce at least $\frac{p}{2}$ distinct remainders upon division by p
+	\end{problem}
+	
+	\begin{solution}
+		Note that if $p=2$ the claim is trivially true, so let's assume $p \geq 3$
+		Let $N(G)$ denote the number of edges in a simple graph $G$.
+		
+		Consider $p$ different simple graphs $G_0,G_2 , \dots G_{p-1}$.  Each of these graphs have $p$ nodes labelled from $1$ to $p$. Graph $G_k$ has an edge between $i$ and $j$ iff 
+		
+		$a_i + ik \equiv a_j + jk \mod p$.
+		
+		note that edge between node $i$ and node $j$ is only present in graph $G_k$ where $k \equiv (a_i - a_j)(j-i)^{-1} \mod p$ .Hence all of the edges of each graph are disjoint and every possible edge is present in at least one graph.
+		\\
+		this implies
+		\[
+		\sum_{i=0}^{i=p-1} N(G_i) = p(p-1)/2
+		\]
+		hence by pigeonhole there exists a graph $G_k$ such that $N(G_k) \leq (p-1)/2$. As number of connected components is at least (nodes - edges) therefore we get number of connected components at least $(p+1)/2$ which proves our original claim
+		
+	\end{solution}
+	
+	\begin{exploration}
+		Lots of thinking on choosing the right $k$ , but then graph idea struck me
+	\end{exploration}
+	
+	\begin{tags}
+		NT , Combinatorics , Graph 
+	\end{tags}
+	
+\end{document}
