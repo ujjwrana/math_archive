@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\title{IMO 1998/3}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Determine all positive integers k such that
+		\[
+		\frac{d(n^2)}{d(n)}= k
+		\]
+		for some $n \in \mathbb{N}$.
+	\end{problem}
+	
+	\begin{solution}
+		Note that $d(n^2)$ is odd so $k$ can never be even. We claim that all odd numbers are possible.
+		
+		Let set $S := \{\frac{d(n^2)}{d(n)} : n \in \mathbb{N}\}$. Then let prime factorization of $n$  be 
+		$\prod_{i=1}^{i=k} p_i^{a_i}$ where $a_i \in \mathbb{N}_0$. Then $\frac{d(n^2)}{d(n)}=\prod_{i=1}^{i=k} (2-\frac{1}{a_i+1})$. Of course all numbers in $S$ are of form   
+		$\prod_{i=1}^{i=k} (2-\frac{1}{a_i})$ where $a_i  \in \mathbb{N}$ , note that any number of form $\prod_{i=1}^{i=k} (2-\frac{1}{a_i})$ is also in $S$ by choosing appropriate prime factors. So we only have to consider rationals of these forms.
+		
+		First of all note that $1 \in S$ by choosing $n=1$ (or choosing $k=1 , a_1 = 1$). Now if $a \in S$ and $b \in S$,then $ab \in S$. Now note that $\forall n ,t \in \mathbb{N}$ we have $\frac{2^t(n-1)+1}{n} \in S$. This can be proved by induction on $t$. For $t=1$ consider the sequence $k=1,a_1=n$. Now if for $t=m$ , if we have  $\frac{2^m(n-1)+1}{n} \in S$, then note that by choosing the sequence 
+		$k=1, a_1 = (2^m (n-1)+1)$ we get $\frac{2^{m+1}(n-1)+1}{2^m (n-1)+1} \in S$. Hence their product $\frac{2^m(n-1)+1}{n} \cdot \frac{2^{m+1}(n-1)+1}{2^m (n-1)+1} \in S$. This completes the induction step. As we have $\frac{2^t(n-1)+1}{n} = 2^t - \frac{2^t-1}{n} \in S$. Letting 
+		$n= a \cdot (2^t-1)$ we get $2^t - \frac{1}{a} \in S$ for all $a \in \mathbb{N}$.
+		
+		Now let's prove any number of form $2t-1 \in S$ where $t \in \mathbb{N}$. For $t=1$, it is already established that $1 \in S$. Now let's suppose for the sake of induction that the given relation holds for all $t<m$ where $t>1$. Then note that $2m-1=2^k \cdot q - 1$ for some  positive $k$ where $q$ is an odd number. Note that $q< (2m-1)$ hence $q \in S$. Now as establised earlier that $2^k - \frac{1}{q} \in S$. We get 
+		$(2^k - \frac{1}{q} )\cdot q = 2^k \cdot q - 1 = 2m-1 \in S$. This finishes the induction step. 
+		Hence all odd numbers $k$ satisfy the given equation for some $n \in \mathbb{N}$.
+	\end{solution}
+	
+	\begin{exploration}
+		Basically same as solution but with lots of messing around. using a computer and looking at construction of 7 helped to realised the $2^k - (2^k - 1)/n$ property
+	\end{exploration}
+	
+	\begin{tags}
+		NT , Algebra 
+	\end{tags}
+	
+\end{document}
