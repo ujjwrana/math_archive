@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\title{USA TSTST/4}
+\date{\today}
+
+\newtheorem*{problem}{Problem}
+\newtheorem*{solution}{Solution}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{exploration}{Exploration}
+\newtheorem*{tags}{Tags}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{problem}
+		Suppose that $n$ and $k$ are positive integers such that \[ 1 = \underbrace{\varphi( \varphi( \dots \varphi(}_{k\ \text{times}}n) \dots )). \] Prove that $n \le 3^k$.
+		
+		Here $\varphi(n)$ denotes Euler's totient function, i.e. $\varphi(n)$ denotes the number of elements of $\{1, \dots, n\}$ which are relatively prime to $n$. In particular, $\varphi(1) = 1$.
+		
+		Proposed by Linus Hamilton
+	\end{problem}
+	
+	\begin{solution}
+		\begin{lemma}
+			\[
+			\forall n \in \mathbb{N} , \frac{n}{\varphi(n)} \leq 3 \cdot \left( \frac{3}{2}\right)^{v_2(\varphi(n))-v_2(n)}
+			\]
+		\end{lemma}
+		\begin{proof}
+				Note that if $n=2^k$ for some $k\geq 0$ then this result holds trivially. Now let's assume that some odd prime divides $n$. Let $S$ denote the set of all primes dividing $n$ and $G$ denotes set of all odd primes dividing $n$.
+				Then note that $v_2(\varphi(n)) \geq v_2(n) + |G|  -1$  as each odd prime will add at least one power of $2$ and only one power of 2 can be taken out from the even part.
+				Hence $|G| \leq  v_2(\varphi(n))-v_2(n) +1 $
+				Now note that. 
+				\[
+				 \frac{n}{\varphi(n)} = \prod_{p \in S}\left(1 + \frac{1}{p-1} \right) \leq 2\cdot \prod_{p \in G}\left(1 + \frac{1}{p-1} \right) \leq 2 \cdot \left(\frac{3}{2} \right)^{|G|} \leq 2 \cdot \left(\frac{3}{2} \right)^{v_2(\varphi(n))-v_2(n) +1 }
+				 \]
+				 which proves our original claim.
+		\end{proof}
+		Now let $f_t(m) = \frac{\varphi ^ {t-1} (m)}{\varphi ^ {t} (m)}$ where $t,m \in \mathbb{N}$ and $g^t(m) $ is the function $g$ applied to $m$ total $t$ times (if $t=0$ then $g^t(m)=m$). 
+		Then note that 
+		\[
+		\prod_{i=1}^{i=k}  f_t(n) \leq \prod_{i=1}^{i=k} 3 \cdot   \left( \frac{3}{2}\right)^{v_2(\varphi^{t}(n))-v_2(\varphi^{t-1}(n))}
+		\]
+		Hence 
+		\[
+		n \leq 3^k \cdot   \left( \frac{3}{2}\right)^{-v_2(n)} \leq 3^k
+		\]
+		QED
+	\end{solution}
+	
+	\begin{exploration}
+		Basically the solution, looking into powers of 2 was the key. We can improve bound to $2 \cdot (3^{k-1})$ but this is clean
+	\end{exploration}
+	
+	\begin{tags}
+		NT , Euler totient , phi
+	\end{tags}
+	
+\end{document}
